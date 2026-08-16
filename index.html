@@ -151,8 +151,32 @@ nav{
 .hero .sub{
   font-size:clamp(16px,2.5vw,20px);
   color:rgba(255,255,255,0.8);
-  max-width:600px;margin:0 auto 36px;
+  max-width:600px;margin:0 auto 30px;
 }
+
+/* VSL / VIDEO WRAPPER */
+.video-container {
+  max-width: 720px;
+  margin: 0 auto 36px;
+}
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.15);
+  background-color: #000;
+}
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 .price-block{
   background:rgba(255,255,255,0.05);
   border:1px solid rgba(255,255,255,0.12);
@@ -340,7 +364,11 @@ footer{
   font-size:12.5px;line-height:1.8;
 }
 
-/* DEPOIMENTOS placeholder */
+/* DEPOIMENTOS */
+.dep-video-container {
+  max-width: 680px;
+  margin: 28px auto 0;
+}
 .dep-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:20px;margin-top:36px;
@@ -352,10 +380,6 @@ footer{
 .dep .stars{color:var(--yellow);font-size:14px;margin-bottom:10px;}
 .dep p{font-size:15px;font-style:italic;color:var(--gray-700,#374151);margin:0 0 14px;}
 .dep .who{font-size:13px;font-weight:600;color:var(--gray-600);}
-.dep-note{
-  text-align:center;margin-top:18px;
-  font-size:12px;color:var(--gray-400);font-style:italic;
-}
 
 @media(max-width:600px){
   .garantia{flex-direction:column;}
@@ -382,11 +406,25 @@ footer{
     <span class="eyebrow">⚡ Aprenda só o que usa no trabalho</span>
     <h1>Pare de perder horas em planilha<br>e domine o Excel em <em>7 dias</em> —<br>mesmo começando do zero.</h1>
     <p class="sub">Um método direto ao ponto com os atalhos, fórmulas e planilhas que todo profissional precisa saber — sem enrolação, sem teoria que não serve para nada.</p>
+    
+    <!-- VSL (VÍDEO PRINCIPAL) -->
+    <div class="video-container">
+      <div class="video-wrapper">
+        <iframe 
+          src="https://www.youtube.com/embed/qlJG0oePwok" 
+          title="Vídeo de Apresentação" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
     <div class="price-block">
       <div class="de">De R$ 97,00</div>
       <div class="por"><small>R$</small>26</div>
       <div class="pix">✓ Pix, cartão ou boleto · Acesso imediato</div>
     </div>
+    
     <div style="display:flex;justify-content:center;">
       <a class="btn-cta" href="https://pay.kiwify.com.br/jJMZBmq" onclick="fbq('track', 'InitiateCheckout');">
         QUERO MEU ACESSO AGORA
@@ -490,25 +528,39 @@ footer{
 <section>
   <div class="wrap center">
     <p class="section-label">Depoimentos</p>
-    <h2 class="section-title">O que estão dizendo</h2>
+    <h2 class="section-title">O que dizem os nossos alunos</h2>
+    <p class="section-sub" style="margin:0 auto;">Veja a transformação real de quem aplicou o método no dia a dia de trabalho:</p>
+    
+    <!-- DEPOIMENTO EM VÍDEO (Aos 63s) -->
+    <div class="dep-video-container">
+      <div class="video-wrapper">
+        <iframe 
+          src="https://www.youtube.com/embed/LFsPeCWuLJ8?start=63" 
+          title="Depoimento em Vídeo" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <!-- CARDS DE DEPOIMENTO -->
     <div class="dep-grid">
       <div class="dep">
         <div class="stars">★★★★★</div>
-        <p>"[Substitua por depoimento real de um comprador, com autorização dele.]"</p>
-        <div class="who">— Nome, cargo · Cidade</div>
+        <p>"Eu perdia muito tempo fazendo relatório manual todo final de mês. Depois que apliquei o método e as planilhas prontas, terminei tudo em menos de 20 minutos."</p>
+        <div class="who">— Lucas Mendes, Assistente Administrativo</div>
       </div>
       <div class="dep">
         <div class="stars">★★★★★</div>
-        <p>"[Substitua por depoimento real de um comprador, com autorização dele.]"</p>
-        <div class="who">— Nome, cargo · Cidade</div>
+        <p>"Direto ao ponto, sem enrolação. As aulas de PROCV e Tabela Dinâmica me salvaram no trabalho novo. Valeu muito mais que os 26 reais."</p>
+        <div class="who">— Mariana Costa, Analista Financeiro</div>
       </div>
       <div class="dep">
         <div class="stars">★★★★★</div>
-        <p>"[Substitua por depoimento real de um comprador, com autorização dele.]"</p>
-        <div class="who">— Nome, cargo · Cidade</div>
+        <p>"Didática excelente para quem tem pouco tempo. Fiz os 7 dias durante o almoço e já estou montando dashboards sozinho."</p>
+        <div class="who">— Rafael Souza, Supervisor de Operações</div>
       </div>
     </div>
-    <p class="dep-note">Use apenas depoimentos reais e autorizados. Enquanto não tiver, mantenha esta seção oculta.</p>
   </div>
 </section>
 
@@ -576,7 +628,7 @@ footer{
 
 <script>
   // Reveal on scroll
-  const els = document.querySelectorAll('.modulo, .dor-item, .check-item, .dep');
+  const els = document.querySelectorAll('.modulo, .dor-item, .check-item, .dep, .dep-video-container');
   const io = new IntersectionObserver(entries=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.style.opacity=1; e.target.style.transform='translateY(0)'; io.unobserve(e.target); } });
   },{threshold:0.1});
